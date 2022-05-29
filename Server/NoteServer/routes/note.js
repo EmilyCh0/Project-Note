@@ -81,6 +81,30 @@ router.get('/list/options', (req, res, next) => {
         })
 })
 
+// findByIdAndUpdate
+router.patch('/:id', (req, res, next) => {
+    
+    Note.findByIdAndUpdate(
+        req.params.id,
+        {
+            $set:
+            {
+                timestamp: req.body.timestamp,
+                title: req.body.title,
+                content: req.body.content,
+                fav: req.body.fav
+            }
+        },
+        function(err, note){
+            if(err){
+                console.log(err)
+            }else{
+                res.json(note)
+            }
+        }
+        )
+
+})
 
 
 
