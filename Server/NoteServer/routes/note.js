@@ -106,6 +106,20 @@ router.patch('/:id', (req, res, next) => {
 
 })
 
+router.delete('/:id', (req, res, next) =>{
+    Note.findByIdAndDelete(
+        req.params.id,
+        function(err, note){
+            if(err){
+                console.log(err)
+            }else{
+                res.json(note)
+            }
+        }
+    )
+    
+})
+
 
 
 module.exports = router
