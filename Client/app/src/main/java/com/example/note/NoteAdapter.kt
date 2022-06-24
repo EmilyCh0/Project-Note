@@ -12,7 +12,7 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
 
     inner class NoteViewHolder(private val binding: NoteViewBinding): RecyclerView.ViewHolder(binding.root){
         fun bindItem(item: Note) = with(binding){
-            dateTv.text = item.date
+            dateTv.text = item.timestamp
             titleTv.text = item.title
             contentTv.text = item.content
         }
@@ -32,7 +32,7 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
     object NoteComparator: DiffUtil.ItemCallback<Note>(){
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
             // objectID로 변경
-            return oldItem.date == newItem.date
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {

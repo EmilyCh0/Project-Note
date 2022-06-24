@@ -24,12 +24,27 @@ class MainFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = FragmentMainBinding.inflate(layoutInflater)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val fragmentMainBinding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = fragmentMainBinding
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.mainFragment = this
 
         retrofitService = RetrofitService.getInstance()
 
-        val opt = OptRequest()
-        val factory = NoteViewModelFactory(retrofitService, opt)
+        val factory = NoteViewModelFactory(retrofitService)
 
         noteViewModel = ViewModelProvider(this, factory).get(NoteViewModel::class.java)
         noteAdapter = NoteAdapter()
@@ -47,14 +62,4 @@ class MainFragment : Fragment() {
         }
 
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
-
-
 }

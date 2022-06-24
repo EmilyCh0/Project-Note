@@ -1,7 +1,11 @@
 package com.example.note.data
 
+import com.google.gson.annotations.SerializedName
+
 data class Note(
-    val date: String,
+    @SerializedName("_id") val id: String,
+    val timestamp: String,
     val title: String,
-    val content: String
+    val content: String,
+    val fav: Boolean
 )

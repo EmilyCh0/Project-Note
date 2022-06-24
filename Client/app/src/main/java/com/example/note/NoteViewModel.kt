@@ -7,9 +7,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.example.note.data.OptRequest
 
-class NoteViewModel(private val api: RetrofitService, private val opt: OptRequest): ViewModel() {
+class NoteViewModel(private val api: RetrofitService): ViewModel() {
 
     var items = Pager(config = PagingConfig(pageSize = 5), pagingSourceFactory = {
-        NoteDataSource(api, opt)
+        NoteDataSource(api)
     }).flow.cachedIn(viewModelScope)
 }

@@ -7,7 +7,7 @@ import com.example.note.data.Note
 import com.example.note.data.OptRequest
 import java.lang.Exception
 
-class NoteDataSource(private val api: RetrofitService, private val opt: OptRequest): PagingSource<Int, Note>() {
+class NoteDataSource(private val api: RetrofitService): PagingSource<Int, Note>() {
     override fun getRefreshKey(state: PagingState<Int, Note>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
@@ -20,7 +20,7 @@ class NoteDataSource(private val api: RetrofitService, private val opt: OptReque
         return try {
             Log.d("PAGER", "load")
             val nextPageNumber = params.key?:1
-            val response = api.getNotes(opt)
+            val response = api.getNotes(nextPageNumber)
 
             LoadResult.Page(
                 data = response,
