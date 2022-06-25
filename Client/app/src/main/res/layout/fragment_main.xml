@@ -18,6 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/note_view" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/new_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:layout_margin="16dp"/>
     </RelativeLayout>
 
 </layout>

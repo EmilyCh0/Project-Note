@@ -15,6 +15,14 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
             dateTv.text = item.timestamp
             titleTv.text = item.title
             contentTv.text = item.content
+            editIv.setOnClickListener {
+
+            }
+            deleteIv.setOnClickListener {
+                // are you sure?
+                // delete
+                this@NoteAdapter.notifyDataSetChanged()
+            }
         }
     }
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {

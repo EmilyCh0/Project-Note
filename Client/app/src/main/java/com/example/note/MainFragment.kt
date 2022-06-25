@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.note.data.OptRequest
 import com.example.note.databinding.FragmentMainBinding
@@ -61,5 +62,14 @@ class MainFragment : Fragment() {
             }
         }
 
+        binding.newFab.setOnClickListener {
+            goToEditFragment()
+        }
+
     }
+
+    private fun goToEditFragment(){
+        findNavController().navigate(R.id.action_mainFragment_to_editFragment)
+    }
+
 }

@@ -25,7 +25,7 @@ class NoteDataSource(private val api: RetrofitService): PagingSource<Int, Note>(
             LoadResult.Page(
                 data = response,
                 prevKey = null,
-                nextKey = nextPageNumber + 1
+                nextKey = if(response.count()==0) null else nextPageNumber + 1
             )
         } catch (e: Exception){
             LoadResult.Error(e)

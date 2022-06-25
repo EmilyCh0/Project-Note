@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="16dp">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
@@ -14,18 +14,35 @@
             android:id="@+id/date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             tools:text="2022-01-01"/>
         <TextView
             android:id="@+id/title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/date_tv"
             tools:text="title"/>
         <TextView
             android:id="@+id/content_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/title_tv"
             tools:text="content"/>
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/delete_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_delete_outline_24"/>
+        <ImageView
+            android:id="@+id/edit_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/delete_iv"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

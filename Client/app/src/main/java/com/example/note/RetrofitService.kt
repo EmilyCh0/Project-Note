@@ -19,6 +19,9 @@ interface RetrofitService {
         @Query("end") end: String
     ): List<Note>
 
+    @POST()
+    suspend fun insertNote(@Body note: Note)
+
     companion object {
         var retrofitService: RetrofitService? = null
         fun getInstance() : RetrofitService{
