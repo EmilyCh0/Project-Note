@@ -68,7 +68,6 @@ class EditFragment : Fragment() {
 
     }
 
-
     private fun goToMainFragment(){
         findNavController().navigate(R.id.action_editFragment_to_mainFragment)
     }

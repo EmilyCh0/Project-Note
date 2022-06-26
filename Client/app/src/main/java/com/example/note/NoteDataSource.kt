@@ -1,6 +1,7 @@
 package com.example.note
 
 import android.util.Log
+import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.note.data.Note
@@ -19,7 +20,15 @@ class NoteDataSource(private val api: RetrofitService): PagingSource<Int, Note>(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Note> {
         return try {
             Log.d("PAGER", "load")
-            val nextPageNumber = params.key?:1
+            var nextPageNumber = params.key?:1
+
+            when (params) {
+                is LoadParams.Refresh -> {
+                    nextPageNumber = 1
+                }
+                else -> {}
+            }
+
             val response = api.getNotes(nextPageNumber)
 
             LoadResult.Page(

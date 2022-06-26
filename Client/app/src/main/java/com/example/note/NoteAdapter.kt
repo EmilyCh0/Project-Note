@@ -7,12 +7,26 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
 import com.example.note.databinding.NoteViewBinding
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteComparator) {
 
     inner class NoteViewHolder(private val binding: NoteViewBinding): RecyclerView.ViewHolder(binding.root){
         fun bindItem(item: Note) = with(binding){
-            dateTv.text = item.timestamp
+            val dateStr = item.timestamp
+//            val utcFormat : SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.KOREA)
+//            utcFormat.timeZone = TimeZone.getTimeZone("UTC")
+//            val utcDate: Date = utcFormat.parse(dateStr)
+//
+//            val localFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a", Locale.KOREA)
+//            localFormat.timeZone = TimeZone.getDefault()
+//
+//            val localDate = localFormat.format(utcDate.date)
+
+            dateTv.text = dateStr?.substring(0 until 10) ?: item.timestamp.toString()
             titleTv.text = item.title
             contentTv.text = item.content
             editIv.setOnClickListener {
