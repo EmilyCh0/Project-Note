@@ -24,7 +24,7 @@ router.get('/list', (req, res, next) => {
     let page = req.query.page;
 
     var query = Note.find()
-        .sort('timestamp')
+        .sort([['timestamp', -1]])
         .skip(page > 0?(page - 1)*5:0)
         .limit(5)
         
