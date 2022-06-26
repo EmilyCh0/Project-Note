@@ -7,12 +7,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
 import com.example.note.databinding.NoteViewBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteComparator) {
+
+    val retrofitService = RetrofitService.getInstance()
 
     inner class NoteViewHolder(private val binding: NoteViewBinding): RecyclerView.ViewHolder(binding.root){
         fun bindItem(item: Note) = with(binding){
@@ -35,7 +40,12 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
             deleteIv.setOnClickListener {
                 // are you sure?
                 // delete
-                this@NoteAdapter.notifyDataSetChanged()
+                val id: String = item.id!!
+                CoroutineScope(Dispatchers.Main).launch {
+                    retrofitService.deleteNote(id)
+                    this@NoteAdapter.refresh()
+                }
+                //this@NoteAdapter.notifyDataSetChanged()
             }
         }
     }

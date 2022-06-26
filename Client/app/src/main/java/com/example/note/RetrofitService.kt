@@ -22,6 +22,9 @@ interface RetrofitService {
     @POST("note")
     suspend fun insertNote(@Body note: Note)
 
+    @DELETE("note/{id}")
+    suspend fun deleteNote(@Path("id") id: String)
+
     companion object {
         var retrofitService: RetrofitService? = null
         fun getInstance() : RetrofitService{
