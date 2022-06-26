@@ -9,17 +9,17 @@ import retrofit2.http.*
 
 interface RetrofitService {
 
-    @GET("list")
+    @GET("note/list")
     suspend fun getNotes(@Query("page") page: Int): List<Note>
 
-    @GET("list/options")
+    @GET("note/list/options")
     suspend fun getNotesByRange(
         @Query("page") page: Int,
         @Query("start") start: String,
         @Query("end") end: String
     ): List<Note>
 
-    @POST()
+    @POST("note")
     suspend fun insertNote(@Body note: Note)
 
     companion object {
@@ -27,7 +27,7 @@ interface RetrofitService {
         fun getInstance() : RetrofitService{
             if(retrofitService == null){
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.0.6:3000/note/")
+                    .baseUrl("http://192.168.0.6:3000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofitService = retrofit.create(RetrofitService::class.java)
