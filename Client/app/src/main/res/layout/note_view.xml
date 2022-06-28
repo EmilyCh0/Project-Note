@@ -38,12 +38,6 @@
             android:layout_marginLeft="8dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_baseline_delete_outline_24"/>
-        <ImageView
-            android:id="@+id/edit_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/delete_iv"
-            android:src="@drawable/ic_baseline_edit_24" />
 
     </RelativeLayout>
 

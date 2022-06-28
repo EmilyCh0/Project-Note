@@ -36,9 +36,6 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
             dateTv.text = dateStr?.substring(0 until 10) ?: item.timestamp.toString()
             titleTv.text = item.title
             contentTv.text = item.content
-            editIv.setOnClickListener {
-
-            }
             deleteIv.setOnClickListener {
                 // dialog box
                 val id: String = item.id!!
