@@ -36,6 +36,8 @@ class MainFragment : Fragment() {
         val id = item.itemId
         if(id == R.id.refresh_menu_item){
             noteAdapter.refresh()
+        }else if(id == R.id.fav_menu_item){
+            // get fav list
         }
         return super.onOptionsItemSelected(item)
     }
@@ -75,14 +77,9 @@ class MainFragment : Fragment() {
         }
 
         binding.newFab.setOnClickListener {
-            goToEditFragment()
+            findNavController().navigate(R.id.action_mainFragment_to_editFragment)
         }
 
-
-    }
-
-    private fun goToEditFragment(){
-        findNavController().navigate(R.id.action_mainFragment_to_editFragment)
     }
 
 }

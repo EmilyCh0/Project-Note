@@ -3,6 +3,7 @@ package com.example.note
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -18,6 +19,7 @@ class DetailFragment : Fragment() {
     private lateinit var retrofitService: RetrofitService
     private lateinit var id: String
     private lateinit var note: Note
+    private lateinit var mmenu: Menu
     private val args by navArgs<DetailFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,7 @@ class DetailFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.detail_menu, menu)
+        this.mmenu = menu
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -50,7 +53,17 @@ class DetailFragment : Fragment() {
                 Toast.makeText(context, "저장 완료", Toast.LENGTH_SHORT).show()
             }
             else -> { // fav
-
+                CoroutineScope(Dispatchers.Main).launch {
+                    note.fav = !note.fav
+                    retrofitService.updateNote(id = id, note = note)
+                    if(note.fav) {
+                        mmenu.getItem(0).setIcon(context?.let { ContextCompat.getDrawable(it, R.drawable.ic_baseline_star_24) })
+                        //Toast.makeText(context, "즐겨찾기 등록", Toast.LENGTH_SHORT).show()
+                    }else{
+                        mmenu.getItem(0).setIcon(context?.let { ContextCompat.getDrawable(it, R.drawable.ic_baseline_star_outline_24) })
+                        //Toast.makeText(context, "즐겨찾기 해제", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
 
         }
@@ -79,6 +92,10 @@ class DetailFragment : Fragment() {
             note = list[0]
             binding.titleEt.setText(note.title)
             binding.contentEt.setText(note.content)
+
+            if(note.fav) {
+                mmenu.getItem(0).setIcon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_star_24))
+            }
         }
 
 
