@@ -3,15 +3,16 @@ package com.example.note
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.note.data.Note
 import com.example.note.databinding.FragmentDetailBinding
-import com.example.note.databinding.FragmentMainBinding
-import kotlinx.coroutines.*
-import kotlin.coroutines.coroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class DetailFragment : Fragment() {
@@ -31,6 +32,7 @@ class DetailFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.detail_menu, menu)
         this.mmenu = menu
+
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -65,7 +67,6 @@ class DetailFragment : Fragment() {
                     }
                 }
             }
-
         }
         return super.onOptionsItemSelected(item)
     }
@@ -92,11 +93,12 @@ class DetailFragment : Fragment() {
             note = list[0]
             binding.titleEt.setText(note.title)
             binding.contentEt.setText(note.content)
-            binding.timestampTv.text = note.timestamp?.substring(0,10)
 
             if(note.fav) {
                 mmenu.getItem(0).setIcon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_star_24))
             }
+
+            (activity as AppCompatActivity?)!!.supportActionBar!!.title = note.timestamp?.substring(0,10)
         }
 
     }

@@ -13,14 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
-        <TextView
-            android:id="@+id/timestamp_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            tools:hint="2022-01-01"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="8dp"/>
+
         <EditText
             android:id="@+id/title_et"
             android:layout_width="match_parent"

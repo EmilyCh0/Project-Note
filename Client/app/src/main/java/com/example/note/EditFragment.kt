@@ -38,18 +38,19 @@ class EditFragment : Fragment() {
         binding.editFragment = this
         retrofitService = RetrofitService.getInstance()
 
-        val cal = Calendar.getInstance()
-        val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)
-        val day = cal.get(Calendar.DAY_OF_MONTH)
-        binding.timestampTv.text = ""+year+"-"+month+"-"+day
-
-        binding.timestampTv.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mdayOfMonth ->
-                binding.timestampTv.setText(""+myear+"-"+mmonth+"-"+mdayOfMonth)
-            }, year, month, day)
-            datePickerDialog.show()
-        }
+        // 작성 날짜 선택 기능 - MongoDB utc time, local time 파싱 필요..
+//        val cal = Calendar.getInstance()
+//        val year = cal.get(Calendar.YEAR)
+//        val month = cal.get(Calendar.MONTH)
+//        val day = cal.get(Calendar.DAY_OF_MONTH)
+//        binding.timestampTv.text = ""+year+"-"+month+"-"+day
+//
+//        binding.timestampTv.setOnClickListener {
+//            val datePickerDialog = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mdayOfMonth ->
+//                binding.timestampTv.setText(""+myear+"-"+mmonth+"-"+mdayOfMonth)
+//            }, year, month, day)
+//            datePickerDialog.show()
+//        }
 
         binding.cancelBtn.setOnClickListener {
             goToMainFragment()
