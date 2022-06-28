@@ -2,9 +2,11 @@ package com.example.note
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.note.data.Mid
 import com.example.note.data.Note
 import com.example.note.databinding.NoteViewBinding
 import kotlinx.coroutines.CoroutineScope
@@ -38,14 +40,18 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
 
             }
             deleteIv.setOnClickListener {
-                // are you sure?
-                // delete
+                // dialog box
                 val id: String = item.id!!
                 CoroutineScope(Dispatchers.Main).launch {
                     retrofitService.deleteNote(id)
                     this@NoteAdapter.refresh()
                 }
                 //this@NoteAdapter.notifyDataSetChanged()
+            }
+            container.setOnClickListener { view ->
+                val arg = Mid(id = item.id!!)
+                val action = MainFragmentDirections.actionMainFragmentToDetailFragment(mid = arg)
+                view.findNavController().navigate(action)
             }
         }
     }

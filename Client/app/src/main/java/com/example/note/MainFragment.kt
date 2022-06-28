@@ -78,6 +78,7 @@ class MainFragment : Fragment() {
             goToEditFragment()
         }
 
+
     }
 
     private fun goToEditFragment(){

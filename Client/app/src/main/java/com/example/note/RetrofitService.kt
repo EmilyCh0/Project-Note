@@ -25,12 +25,15 @@ interface RetrofitService {
     @DELETE("note/{id}")
     suspend fun deleteNote(@Path("id") id: String)
 
+    @PATCH("note/{id}")
+    suspend fun updateNote(@Body note: Note)
+
     companion object {
         var retrofitService: RetrofitService? = null
         fun getInstance() : RetrofitService{
             if(retrofitService == null){
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.0.6:3000/")
+                    .baseUrl("http://192.168.56.1:9898/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofitService = retrofit.create(RetrofitService::class.java)
