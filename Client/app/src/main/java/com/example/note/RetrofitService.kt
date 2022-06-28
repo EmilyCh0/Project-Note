@@ -13,6 +13,9 @@ interface RetrofitService {
     @GET("note/list")
     suspend fun getNotes(@Query("page") page: Int): List<Note>
 
+    @GET("note/list/fav")
+    suspend fun getFavList(@Query("page") page: Int): List<Note>
+
     @GET("note/{id}")
     suspend fun getOneNote(@Path("id") id: String): List<Note>
 

@@ -92,12 +92,12 @@ class DetailFragment : Fragment() {
             note = list[0]
             binding.titleEt.setText(note.title)
             binding.contentEt.setText(note.content)
+            binding.timestampTv.text = note.timestamp?.substring(0,10)
 
             if(note.fav) {
                 mmenu.getItem(0).setIcon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_star_24))
             }
         }
-
 
     }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/fav_menu_item"
         app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_star_24"
+        android:icon="@drawable/ic_baseline_star_outline_24"
         android:title="favorites"/>
     <item android:id="@+id/refresh_menu_item"
         app:showAsAction="always"

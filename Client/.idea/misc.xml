@@ -5,7 +5,10 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.24427083333333333" />
         <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.147" />
+        <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/layout/activity_main.xml" value="0.1461499493414387" />
         <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/layout/fragment_detail.xml" value="0.37135416666666665" />
+        <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/layout/fragment_edit.xml" value="0.1461499493414387" />
+        <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/layout/fragment_fav.xml" value="0.1461499493414387" />
         <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/layout/fragment_main.xml" value="0.37135416666666665" />
         <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/layout/note_view.xml" value="0.37135416666666665" />
         <entry key="..\:/Users/TILON/Projects/Note28/Client/app/src/main/res/menu/detail_menu.xml" value="0.37135416666666665" />

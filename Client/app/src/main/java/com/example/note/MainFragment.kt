@@ -37,7 +37,8 @@ class MainFragment : Fragment() {
         if(id == R.id.refresh_menu_item){
             noteAdapter.refresh()
         }else if(id == R.id.fav_menu_item){
-            // get fav list
+            // get favorites
+            findNavController().navigate(R.id.action_mainFragment_to_favFragment)
         }
         return super.onOptionsItemSelected(item)
     }
