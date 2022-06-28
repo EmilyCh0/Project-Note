@@ -38,6 +38,20 @@ router.get('/list', (req, res, next) => {
         })
 });
 
+// find one note by id
+router.get('/:id', (req, res, next) => {
+    var query = Note.find({'_id': req.params.id})
+
+    query.exec()
+    .then((notes) => {
+        res.json(notes);
+    })
+    .catch((error) => {
+        console.error(error);
+        next(error);
+    })
+});
+
 // get fav
 router.get('/list/fav', (req, res, next) => {
     let page = req.query.page;
