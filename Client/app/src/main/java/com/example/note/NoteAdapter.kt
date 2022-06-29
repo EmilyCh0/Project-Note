@@ -1,5 +1,8 @@
 package com.example.note
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -20,6 +23,7 @@ import java.util.*
 class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteComparator) {
 
     val retrofitService = RetrofitService.getInstance()
+    private lateinit var context: Context
 
     inner class NoteViewHolder(private val binding: NoteViewBinding): RecyclerView.ViewHolder(binding.root){
         fun bindItem(item: Note) = with(binding){
@@ -38,12 +42,21 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
             contentTv.text = item.content
             deleteIv.setOnClickListener {
                 // dialog box
-                val id: String = item.id!!
-                CoroutineScope(Dispatchers.Main).launch {
-                    retrofitService.deleteNote(id)
-                    this@NoteAdapter.refresh()
-                }
-                //this@NoteAdapter.notifyDataSetChanged()
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("노트 삭제")
+                    .setMessage("삭제하시겠습니까?")
+                    .setPositiveButton("삭제",
+                        DialogInterface.OnClickListener { dialogInterface, i ->
+                            val id: String = item.id!!
+                            deleteItem(id)
+                        }
+                        )
+                    .setNegativeButton("취소",
+                        DialogInterface.OnClickListener { dialogInterface, i ->  }
+                        )
+                builder.show()
+
+
             }
             container.setOnClickListener { view ->
                 val arg = Mid(id = item.id!!)
@@ -61,6 +74,7 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
         parent: ViewGroup,
         viewType: Int
     ): NoteViewHolder {
+        context = parent.context
         return NoteViewHolder(NoteViewBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
@@ -73,6 +87,14 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
         override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem == newItem
         }
+    }
+
+    private fun deleteItem(id: String){
+        CoroutineScope(Dispatchers.Main).launch {
+            retrofitService.deleteNote(id)
+            this@NoteAdapter.refresh()
+        }
+        //this@NoteAdapter.notifyDataSetChanged()
     }
 
 }
