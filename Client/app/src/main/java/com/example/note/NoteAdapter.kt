@@ -55,6 +55,7 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
                         )
                 builder.show()
             }
+
             container.setOnClickListener { view ->
                 val arg = Mid(id = item.id!!)
                 val action = MainFragmentDirections.actionMainFragmentToDetailFragment(mid = arg)
@@ -77,7 +78,6 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
 
     object NoteComparator: DiffUtil.ItemCallback<Note>(){
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
-            // objectID로 변경
             return oldItem.id == newItem.id
         }
 

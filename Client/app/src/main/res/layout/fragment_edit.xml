@@ -29,6 +29,8 @@
             android:paddingVertical="12dp"
             android:layout_below="@+id/timestamp_tv"
             android:hint="제목"
+            android:textSize="17sp"
+            android:textStyle="bold"
             android:fontFamily="@font/cafe"
             android:background="@android:color/transparent" />
 
@@ -50,6 +52,7 @@
             android:layout_below="@+id/border"
             android:scrollbars="vertical"
             android:fontFamily="@font/cafe"
+            android:lineSpacingExtra="5sp"
             android:hint="내용"/>
 
         <Button

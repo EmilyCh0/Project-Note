@@ -48,6 +48,6 @@
     <fragment
         android:id="@+id/favFragment"
         android:name="com.example.note.favorites.FavFragment"
-        android:label="즐겨찾기"
+        android:label="북마크"
         tools:layout="@layout/fragment_fav" />
 </navigation>
