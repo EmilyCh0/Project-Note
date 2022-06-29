@@ -13,8 +13,30 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
+        <item name="android:textViewStyle">@style/cafeTextView</item>
+        <item name="android:buttonStyle">@style/cafeButton</item>
+        <item name="android:editTextStyle">@style/cafeEditText</item>
+        <item name="android:alertDialogStyle">@style/cafeAlertDialog</item>
+
+
     </style>
+
+    <style name="cafeTextView" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/cafe</item>
+    </style>
+    <style name="cafeButton" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/cafe</item>
+    </style>
+    <style name="cafeEditText" parent="android:Widget.EditText">
+        <item name="android:fontFamily">@font/cafe</item>
+    </style>
+    <style name="cafeAlertDialog" parent="android:DeviceDefault.ButtonBar.AlertDialog">
+        <item name="android:fontFamily">@font/cafe</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">@android:color/black</item>
     </style>
+
+
 </resources>

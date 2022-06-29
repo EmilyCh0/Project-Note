@@ -21,6 +21,7 @@
             android:paddingHorizontal="8dp"
             android:paddingVertical="12dp"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/cafe"
             tools:hint="title"
             android:background="@android:color/transparent" />
 
@@ -41,6 +42,7 @@
             android:background="@android:color/transparent"
             android:layout_below="@+id/border"
             android:scrollbars="vertical"
+            android:fontFamily="@font/cafe"
             tools:hint="context"/>
     </RelativeLayout>
 
