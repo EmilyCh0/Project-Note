@@ -41,7 +41,6 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
             titleTv.text = item.title
             contentTv.text = item.content
             deleteIv.setOnClickListener {
-                // dialog box
                 val builder = AlertDialog.Builder(context)
                 builder.setTitle("노트 삭제")
                     .setMessage("삭제하시겠습니까?")
@@ -55,8 +54,6 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
                         DialogInterface.OnClickListener { dialogInterface, i ->  }
                         )
                 builder.show()
-
-
             }
             container.setOnClickListener { view ->
                 val arg = Mid(id = item.id!!)

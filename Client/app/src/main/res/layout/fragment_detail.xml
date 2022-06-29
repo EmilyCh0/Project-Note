@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:paddingVertical="12dp"
-            android:layout_below="@id/timestamp_tv"
+            android:layout_alignParentTop="true"
             tools:hint="title"
             android:background="@android:color/transparent" />
 

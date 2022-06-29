@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.note.MainFragment"
-        android:label="main"
+        android:label="Note!"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_editFragment"
@@ -23,8 +23,8 @@
     <fragment
         android:id="@+id/editFragment"
         android:name="com.example.note.EditFragment"
-        android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" >
+        android:label="새 노트"
+        tools:layout="@layout/fragment_edit">
         <action
             android:id="@+id/action_editFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -48,6 +48,6 @@
     <fragment
         android:id="@+id/favFragment"
         android:name="com.example.note.favorites.FavFragment"
-        android:label="fragment_fav"
+        android:label="즐겨찾기"
         tools:layout="@layout/fragment_fav" />
 </navigation>
