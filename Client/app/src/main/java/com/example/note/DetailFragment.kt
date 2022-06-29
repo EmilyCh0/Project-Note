@@ -43,7 +43,7 @@ class DetailFragment : Fragment() {
                     retrofitService.deleteNote(id)
                 }
                 findNavController().navigate(R.id.action_detailFragment_to_mainFragment)
-                Toast.makeText(context, "삭제 완료", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.delete_complete), Toast.LENGTH_SHORT).show()
             }
             R.id.save_btn -> {
                 CoroutineScope(Dispatchers.IO).launch {
@@ -52,7 +52,7 @@ class DetailFragment : Fragment() {
                     retrofitService.updateNote(id = id, note = note)
                 }
                 findNavController().navigate(R.id.action_detailFragment_to_mainFragment)
-                Toast.makeText(context, "저장 완료", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.save_complete), Toast.LENGTH_SHORT).show()
             }
             else -> { // fav
                 CoroutineScope(Dispatchers.Main).launch {

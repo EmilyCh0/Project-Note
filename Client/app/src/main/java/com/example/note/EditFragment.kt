@@ -1,5 +1,6 @@
 package com.example.note
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,6 +33,7 @@ class EditFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,7 +44,7 @@ class EditFragment : Fragment() {
         val year = cal.get(Calendar.YEAR)
         val month = cal.get(Calendar.MONTH)
         val day = cal.get(Calendar.DAY_OF_MONTH)
-        binding.timestampTv.text = ""+year+"-"+month+"-"+day
+        binding.timestampTv.text = "$year-$month-$day"
 
         // 작성 날짜 선택 기능 - MongoDB utc time, local time 파싱 필요..
 //        binding.timestampTv.setOnClickListener {

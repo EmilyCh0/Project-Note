@@ -42,15 +42,15 @@ class NoteAdapter: PagingDataAdapter<Note, NoteAdapter.NoteViewHolder>(NoteCompa
             contentTv.text = item.content
             deleteIv.setOnClickListener {
                 val builder = AlertDialog.Builder(context)
-                builder.setTitle("노트 삭제")
-                    .setMessage("삭제하시겠습니까?")
-                    .setPositiveButton("삭제",
+                builder.setTitle(context.getString(R.string.delete_note))
+                    .setMessage(context.getString(R.string.delete_are_you_sure))
+                    .setPositiveButton(context.getString(R.string.delete),
                         DialogInterface.OnClickListener { dialogInterface, i ->
                             val id: String = item.id!!
                             deleteItem(id)
                         }
                         )
-                    .setNegativeButton("취소",
+                    .setNegativeButton(context.getString(R.string.cancel),
                         DialogInterface.OnClickListener { dialogInterface, i ->  }
                         )
                 builder.show()
